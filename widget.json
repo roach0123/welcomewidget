@@ -1,0 +1,6 @@
+{
+  "name": "welcome",
+  "description": "Will show the current time and a welcome message for the current user",
+  "author": "Sam Roach",
+  "email": "sam@samroach.com"
+}
