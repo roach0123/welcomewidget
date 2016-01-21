@@ -28,18 +28,19 @@ update: (output, domEl) ->
 
   # Break up time into arraw 0=Hours 1=Minutes 2=AM/PM
   times = rows[0].trim().split(':')
+  hours = parseInt( times[0], 10 );
 
   # TODO: Clean up, but works for now
-  message = 'Good night' if (times[2] == 'PM' && times[0]<13)
-  message = 'Good evening' if (times[2] == 'PM' && times[0]<10)
-  message = 'Good afternoon' if (times[2] == 'PM' && times[0]<5)
-  message = 'Good afternoon' if (times[2] == 'PM' && times[0]==12)
-  message = 'Good morning' if (times[2] == 'AM' && times[0]<13)
-  message = 'Good night' if (times[2] == 'AM' && times[0]<4)
-  message = 'Good night' if (times[2] == 'AM' && times[0]==12)
+  message = 'Good night' if (times[2] == 'PM' && hours<13)
+  message = 'Good evening' if (times[2] == 'PM' && hours<10)
+  message = 'Good afternoon' if (times[2] == 'PM' && hours<5)
+  message = 'Good afternoon' if (times[2] == 'PM' && hours==12)
+  message = 'Good morning' if (times[2] == 'AM' && hours<13)
+  message = 'Good night' if (times[2] == 'AM' && hours<4)
+  message = 'Good night' if (times[2] == 'AM' && hours==12)
 
   # Show the time and welcome message
-  $(domEl).find('.time').text times[0] + ':' + times[1]
+  $(domEl).find('.time').text hours + ':' + times[1]
   $(domEl).find('.name').text message + ', ' + myname + '.'
 
 # Basic Style to center output 
